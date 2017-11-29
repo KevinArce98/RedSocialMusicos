@@ -9,5 +9,20 @@ class Instrument extends CI_Model {
                 // Your own constructor code
         }
 
+function save($instrument)
+  {
+    $r = $this->db->insert('intrument', $instrument);
+    return $r;
+  }
+
+
+        function all(){
+    
+    $query = $this->db->get('instruments');
+
+    return $query->result_object();
+
+  }
+
 
 }
