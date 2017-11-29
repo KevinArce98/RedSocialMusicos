@@ -19,19 +19,32 @@
 			<div class="form-group row">
 				<label for="name" class="col-sm-2 form-control-label">Name</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="name" name="name" placeholder="Name">
+					<input type="text" class="form-control" id="name" name="name" placeholder="Name" required="">
 				</div>
 			</div>
 			<div class="form-group row">
+				<label for="name" class="col-sm-2 form-control-label">Last Name</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required="">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="name" class="col-sm-2 form-control-label">Address</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="address" name="address" placeholder="Address" required="">
+				</div>
+			</div>
+
+			<div class="form-group row">
 				<label for="email" class="col-sm-2 form-control-label">Email</label>
 				<div class="col-sm-10">
-					<input type="email" class="form-control" id="email" name="email" placeholder="Email">
+					<input type="email" class="form-control" id="email" name="email" placeholder="Email" required="">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="password" class="col-sm-2 form-control-label">Password</label>
 				<div class="col-sm-10">
-					<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+					<input type="password" class="form-control" id="password" name="password" placeholder="Password" required="">
 				</div>
 			</div>
 			<div class="form-group row">
