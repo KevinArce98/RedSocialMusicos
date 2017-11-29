@@ -1,5 +1,5 @@
 <?php 
-class Instrument extends CI_Model {
+class MusicalGenre extends CI_Model {
 
 
         
