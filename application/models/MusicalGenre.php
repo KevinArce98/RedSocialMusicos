@@ -11,10 +11,8 @@ class MusicalGenre extends CI_Model {
 
 
         public function All(){
-
-         $query = $this->db->get('assigned_musicalgenre');
-
-return $query->result_object();
+	        $query = $this->db->get('musicalgenre');
+			return $query->result();
 
         }
 

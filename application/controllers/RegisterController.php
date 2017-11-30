@@ -5,7 +5,9 @@ class RegisterController extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('user/register');
+		$genres = $this->MusicalGenre->All();
+		$data['genres'] = $genres;
+		$this->load->view('user/register', $data);
 	}
 	public function create()
 	{

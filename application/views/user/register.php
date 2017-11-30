@@ -34,7 +34,17 @@
 					<input type="text" class="form-control" id="address" name="address" placeholder="Address" required="">
 				</div>
 			</div>
-
+			<div class="form-group row">
+				<label for="genre" class="col-sm-2 form-control-label">Genre</label>
+				<div class="col-sm-10">
+					<select class=" form-control">
+						<option selected>Select the genres favorites</option>
+						<?php foreach ($genres as $genre) {?>
+							<option value="<?php echo "$genre->id" ?>"><?php echo "$genre->name" ?></option>
+						<?php } ?>
+					</select>
+				</div>
+			</div>
 			<div class="form-group row">
 				<label for="email" class="col-sm-2 form-control-label">Email</label>
 				<div class="col-sm-10">
