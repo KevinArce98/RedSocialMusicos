@@ -15,7 +15,7 @@
 				<h2>Register</h2>
 				<a class="btn btn-primary" href="<?php echo site_url('login'); ?>" role="button">Back</a>		
 			</div>
-			<form class="mt-4" method="POST" action="user/save" enctype="multipart/form-data">
+			<form class="mt-4" action="user/save" enctype="multipart/form-data" method="post" accept-charset="utf-8">
 				
      
 			<div class="form-group row">

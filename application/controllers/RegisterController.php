@@ -14,29 +14,38 @@ class RegisterController extends CI_Controller {
 	public function create()
 	{	
 		$name = $this->input->post('name');
-		$lastname = $this->input->post('lastname');
+		$lastname = $this->input->post('lastName');
 		$address = $this->input->post('address');
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 		$genres = $this->input->post('genres');
 		$instruments = $this->input->post('instruments');
-		$config = array(
-		'upload_path' => "./uploads/",
-		'allowed_types' => "gif|jpg|png|jpeg|pdf",
-		'overwrite' => TRUE,
-		'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-		'max_height' => "768",
-		'max_width' => "1024"
-		);
-		$this->load->library('upload', $config);
-print_r($config);die;
+		//Check whether user upload picture
+            if(!empty($_FILES['avatar']['name'])){
+                $config['upload_path'] = 'uploads/';
+                $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                $config['file_name'] = $_FILES['avatar']['name'];
+                
+                //Load upload library and initialize configuration
+                $this->load->library('upload',$config);
+                $this->upload->initialize($config);
+                
+                if($this->upload->do_upload('avatar')){
+                    $uploadData = $this->upload->data();
+                    $picture = $uploadData['file_name'];
+                }else{
+                    $picture = '';
+                }
+            }else{
+                $picture = '';
+            }
 		$new = $this->User->encrypt_password($password, $email);
 		$data = array(
 		   'email' => $email ,
 		   'name' => $name ,
 		   'lastname' => $lastname ,
 		   'address' => $address ,
-		   'avatar' => $avatar ,
+		   'avatar' => $picture ,
 		   'password' => $new
 		);
 
