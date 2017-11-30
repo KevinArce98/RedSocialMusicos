@@ -2,7 +2,7 @@
 Red Social Musicos
 ###################
 
-Para hacer uso de la aplicacion se debe tener XAMMP instalado  previamente, luego alvergar la carpeta en XAMMP -> htdocs.
+Para hacer uso de la aplicacion se debe tener XAMMP instalado  previamente, luego alvergar la carpeta en XAMPP -> htdocs.
 Luego de esto abrimos cualquier explorados y escribimos la ruta donde se enuentra nuestro archivo, sin olvidar levantar APACHE y MySQL.
 En este caso nuestra ruta seria ("http://localhost/RedSocialMusicos").
 
@@ -12,7 +12,7 @@ podras encontrar musicos para tu banda o simplemente conocer nuevos amigos con t
 
 
 
-DESARROLLADO POR JAKADESING.
+DESARROLLADO POR JAKADESIGN.
 
 Colaboradores
              *Kevin Arias
