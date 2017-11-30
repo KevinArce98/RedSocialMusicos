@@ -12,6 +12,17 @@ class HomeController extends CI_Controller {
 		$users=$this->User->all();
 		$data['users'] = $users;
 		$this->load->view('principal', $data);
+	
 	}
 	
+
+	public function search(){
+		$genres= $this->input->post('genre');
+		$tools= $this->input->post('instruments');
+		
+		$data['users']=$this->User->search($genres, $tools);
+		$this->load->view('principal', $data);
+		
+
+	}
 }

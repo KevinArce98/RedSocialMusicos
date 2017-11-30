@@ -53,5 +53,28 @@ class User extends CI_Model {
 			 public function all(){
 		        $query = $this->db->get('musicians');
 		        return $query->result();
-      }
-}
+	  
+			
+			}
+
+			public function search($genres,$tools){
+				
+				$sql = "SELECT ms.name, ms.lastname, ms.address, ms.avatar, ms.email
+				 FROM musicians ms, assigned_instruments ai, assigned_musicalgenre am 
+				 WHERE ms.id = ai.musicians_id AND ms.id = am.musicians_id";
+
+             if (isset($genres)) {
+                       $sql+= " AND am.musicalgenre_id = ?";
+                }
+             if (isset($tools)) {
+                       $sql+= " AND ai.instruments_id = ? ";
+                    }
+                      $sql+= "GROUP by ms.id;";
+				
+					$res =  $this->db->query($sql, array($genres, $tools));
+
+					return $res->result();
+
+
+			}
+		}
