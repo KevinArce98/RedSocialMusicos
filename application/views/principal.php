@@ -21,38 +21,32 @@
 			</div>
 			<div class="mt-4 mb-4">
 				<div class="d-flex justify-content-between">	
-					<h1>All Users of the Database</h1>
+					<h1>All Musicians of Database</h1>
 					<form action="<?php echo site_url('logout'); ?>" method="post">
-						<button type="submit" class="btn btn-primary" <?php if (!isset($_SESSION['user'])) {
+						<button type="submit" class="btn btn-outline-danger" <?php if (!isset($_SESSION['user'])) {
 																			echo "disabled"; 				
 																		}?>>Cerrar Sesión</button>
 					</form>
 				</div>
 			</div>
-	<form action="" method="post">
- 					
-
-
-		<select name="instruments">
-		 <?php  foreach ($instruments as $instrument) {  ?>
-                 <option value="<?php echo $instrument->id ?>"><?php echo "$instrument->name"; ?></option>
-		 <?php } ?>
-
-		</select>
-
-
-		<select name="genre">
-		 <?php  foreach ($genres as $genre) {  ?>
-                 <option value="<?php echo $genre->id ?>"><?php echo "$genre->name"; ?></option>
-		 <?php } ?>
-
-		</select>
-
-
-
-
-
-		<button type="submit" class="btn btn-primary">Buscar</button>
+	<form action="<?php echo site_url('search'); ?>" method="post">
+		<div class="row mb-2">
+			<div class="col-md-6">
+				<select name="instruments" class="form-control">
+					 <?php  foreach ($instruments as $instrument) {  ?>
+			                 <option value="<?php echo $instrument->id ?>"><?php echo "$instrument->name"; ?></option>
+					 <?php } ?>
+				</select>
+			</div>
+			<div class="col-md-6">
+				<select name="genre" class="form-control">
+					 <?php  foreach ($genres as $genre) {  ?>
+			                 <option value="<?php echo $genre->id ?>"><?php echo "$genre->name"; ?></option>
+					 <?php } ?>
+				</select>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-outline-success mb-2">Buscar</button>
 
 	</form>
 		<table class="table table-hover">
