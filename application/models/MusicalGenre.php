@@ -10,7 +10,7 @@ class MusicalGenre extends CI_Model {
         }
 
 
-        public function All(){
+        public function all(){
 	        $query = $this->db->get('musicalgenre');
 			return $query->result();
 
