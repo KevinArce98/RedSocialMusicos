@@ -21,5 +21,14 @@ class Instrument extends CI_Model {
         return $query->result();
       }
 
+      public function dropbox()
+      {
+            $query = $this->db->get('instruments');      
+          foreach ($query as $row) {
+         
+         echo '<option value" ">.'$row['name']'</option>';
+
+      }
+  } 
 
 }
