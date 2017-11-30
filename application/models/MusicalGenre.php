@@ -16,5 +16,10 @@ class MusicalGenre extends CI_Model {
 
         }
 
+        function insert($array){
+	$result = $this->db->insert('assigned_musicalgenre', $arrray);
+                return $result;
+        }
+
 
 }

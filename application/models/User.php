@@ -42,4 +42,10 @@ class User extends CI_Model {
 
 
 			}
+
+
+			function insert($array){
+				$result = $this->db->insert('musicians', $arrray);
+                return $result;
+			}
 }
