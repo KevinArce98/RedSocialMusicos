@@ -29,64 +29,48 @@
 					</form>
 				</div>
 			</div>
-			<form action="" method="post">
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Instrumento
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-    <button class="dropdown-item" type="button">Action</button>
-    <button class="dropdown-item" type="button">Another action</button>
-    <button class="dropdown-item" type="button">Something else here</button>
-  </div>
-</div>
+	<form action="" method="post">
+ 					
 
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Genero Musical
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-    <button class="dropdown-item" type="button">Action</button>
-    <button class="dropdown-item" type="button">Another action</button>
-    <button class="dropdown-item" type="button">Something else here</button>
-  </div>
-</div>
+
+		<select name="instruments">
+		 <?php  foreach ($instruments as $instrument) {  ?>
+                 <option value="<?php echo $instrument->id ?>"><?php echo "$instrument->name"; ?></option>
+		 <?php } ?>
+
+		</select>
+
+
+		<select name="genre">
+		 <?php  foreach ($genres as $genre) {  ?>
+                 <option value="<?php echo $genre->id ?>"><?php echo "$genre->name"; ?></option>
+		 <?php } ?>
+
+		</select>
+
+
 
 
 
 		<button type="submit" class="btn btn-primary">Buscar</button>
-					</form>
+
+	</form>
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>Email</th>
 					<th>Name</th>
-					<th>Action</th>
+					<th>Last Name</th>
+					
 				</tr>
 			</thead>
 			<tbody>
 				<?php 
-					foreach ($query->result() as $row)
+					foreach ($users as $row)
 					{ ?>
 				        <tr>
-							<td><?php echo"$row->email"?></td>
 							<td><?php echo"$row->name"?></td>
-							<td>
-								<?php  if ($row->email != $_SESSION['user']->email) {?>
-									<div class="d-flex">
-										<form action="<?php echo site_url("edit/".$row->id); ?>" method="post">
-											<button type="submit" class="btn btn-warning btn-sm" <?php if (!isset($_SESSION['user'])) {
-																				echo "disabled"; 				
-																			}?>>Edit</button>
-										</form>
-										<form action="<?php echo site_url("destroy/".$row->id); ?>" method="post" class="ml-1">
-											<button type="submit" class="btn btn-danger btn-sm" <?php if (!isset($_SESSION['user'])) {
-																				echo "disabled"; 				
-																			}?>>Delete</button>
-										</form>
-									</div>
-								<?php } ?>
-							</td>
+							<td><?php echo"$row->lastname"?></td>
+							
 				        </tr>
 					<?php } ?>
 			</tbody>

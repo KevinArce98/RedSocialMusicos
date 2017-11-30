@@ -49,4 +49,9 @@ class User extends CI_Model {
 				$this->db->trans_complete();
     			return $this->db->insert_id();
 			}
+
+			 public function all(){
+		        $query = $this->db->get('musicians');
+		        return $query->result();
+      }
 }

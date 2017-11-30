@@ -12,7 +12,7 @@ class LoginController extends CI_Controller {
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 
-		$query = $this->db->get('users');
+		$query = $this->db->get('musicians');
 
 		foreach ($query->result() as $row)
 		{
