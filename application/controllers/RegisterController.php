@@ -48,12 +48,11 @@ class RegisterController extends CI_Controller {
 		   'avatar' => $picture ,
 		   'password' => $new
 		);
+		$user_id = $this->User->insert($data);
 
-		$result = $this->db->insert('musicians', $data); 
-		if ($result) {
-			redirect('');
-		}else{
-			redirect('register');
-		}
+		$this->MusicalGenre->insert($genres, $user_id);
+		$this->Instrument->insert($instruments, $user_id);
+		redirect('register');
+
 	}
 }
