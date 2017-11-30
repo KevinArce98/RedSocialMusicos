@@ -21,6 +21,12 @@ class Instrument extends CI_Model {
         return $query->result();
       }
 
+      public function select($id){
+        $sql = 'SELECT it.* FROM assigned_instruments ai, instruments it WHERE ai.musicians_id = ? AND ai.instruments_id = it.id';
+        $res =  $this->db->query($sql, array($id));
+        return $res->result();
+      }
+
      
 
       public function insert($array, $id){

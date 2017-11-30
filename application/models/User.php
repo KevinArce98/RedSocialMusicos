@@ -57,24 +57,36 @@ class User extends CI_Model {
 			
 			}
 
-			public function search($genres,$tools){
+			public function search($genres, $tools){
 				
-				$sql = "SELECT ms.name, ms.lastname, ms.address, ms.avatar, ms.email
-				 FROM musicians ms, assigned_instruments ai, assigned_musicalgenre am 
-				 WHERE ms.id = ai.musicians_id AND ms.id = am.musicians_id";
+			$sql = "SELECT ms.name, ms.lastname, ms.address, ms.avatar, ms.email, ms.id
+				 FROM musicians ms, assigned_instruments ai, assigned_musicalgenre am ";
+			$aux = [];
+			$aux2 = false;
+			if ($genres != 0 || $tools != 0 ) {
+				$sql = $sql."WHERE ";
+			}
+            if ($genres != 0) {
+                $sql = $sql. "ms.id = am.musicians_id AND am.musicalgenre_id = ?";
+                $aux = [$genres];
+                $aux2 = true;
+            }
+           
+            if ($tools != 0) {
+            	 if ($aux2) {
+            	$sql = $sql. " AND ";
+            }
+                $sql = $sql. "ms.id = ai.musicians_id AND ai.instruments_id = ? ";
+                array_push($aux, $tools);
+            }
+	            $sql = $sql." GROUP by ms.id;";
+				$res =  $this->db->query($sql, $aux);
 
-             if (isset($genres)) {
-                       $sql+= " AND am.musicalgenre_id = ?";
-                }
-             if (isset($tools)) {
-                       $sql+= " AND ai.instruments_id = ? ";
-                    }
-                      $sql+= "GROUP by ms.id;";
-				
-					$res =  $this->db->query($sql, array($genres, $tools));
-
-					return $res->result();
-
-
+				return $res->result();
+			}
+			public function find($id)
+			{
+				$this->db->where('id',$id);			
+				return $this->db->get('musicians')->result();			
 			}
 		}

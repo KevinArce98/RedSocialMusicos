@@ -4,7 +4,7 @@
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>Edit</title>
+		<title>Show User</title>
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -12,34 +12,50 @@
 	<body>
 		<div class="container mt-3">
 			<div class="d-flex justify-content-between">
-				<h2>Editing</h2>
+				<h2><?php echo "$user->name" ?> <?php echo "$user->lastname" ?></h2>
 				<a class="btn btn-primary" href="<?php echo site_url('home'); ?>" role="button">Back</a>		
 			</div>
-			<form class="mt-4" method="POST" action="<?php echo site_url('update/'.$user->id); ?>">
+			<div class="form-group ">
+
+					<img src="<?php echo site_url().'uploads/'.$user->avatar; ?>" class="avatar img-circle" alt="avatar" id="imgAvatar" width="250px" height="250px">
+			</div>
 			<div class="form-group row">
-				<label for="name" class="col-sm-2 form-control-label">Name</label>
+				<label for="name" class="col-sm-2 form-control-label">Address</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="name" name="name" value="<?php echo $user->name ?>" placeholder="Name" required>
+					<input type="text" class="form-control" value="<?php echo $user->address ?>" readonly>
 				</div>
 			</div>
+			<?php if($instruments){ ?>
+				<div class="form-group row">
+					<label for="genre" class="col-sm-2 form-control-label">Instruments</label>
+					<div class="col-sm-10">
+						<?php foreach ($instruments as $instrument) {?>
+							<div class="checkbox">
+							  <label><input type="checkbox" checked><?php echo "$instrument->name" ?></label>
+							</div>
+						<?php } ?>
+					</div>
+				</div>
+			<?php }?>
+			<?php if($genres){ ?>
+			<div class="form-group row">
+				<label for="genre" class="col-sm-2 form-control-label">Genre</label>
+				<div class="col-sm-10">
+
+					<?php foreach ($genres as $genre) {?>
+						<div class="checkbox">
+						  <label ><input type="checkbox" checked><?php echo "$genre->name" ?></label>
+						</div>
+					<?php } ?>
+				</div>
+			</div>
+			<?php }?>
 			<div class="form-group row">
 				<label for="email" class="col-sm-2 form-control-label">Email</label>
 				<div class="col-sm-10">
-					<input type="email" class="form-control" id="email" name="email" value="<?php echo $user->email ?>" placeholder="Email" required>
+					<input type="email" class="form-control" value="<?php echo $user->email ?>" readonly>
 				</div>
 			</div>
-			<div class="form-group row">
-				<label for="password" class="col-sm-2 form-control-label">Password</label>
-				<div class="col-sm-10">
-					<input type="password" class="form-control" id="password" name="password" placeholder="Ingrese la contraseña" required>
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-success">Update</button>
-				</div>
-			</div>
-		</form>
 		</div>
 
 		<!-- Optional JavaScript -->

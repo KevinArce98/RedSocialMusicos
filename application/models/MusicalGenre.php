@@ -25,5 +25,11 @@ class MusicalGenre extends CI_Model {
 			}
         }
 
+        public function select($id){
+        $sql = 'SELECT it.* FROM assigned_musicalgenre ai, musicalgenre it WHERE ai.musicians_id = ? AND ai.musicalgenre_id = it.id';
+        $res =  $this->db->query($sql, array($id));
+        return $res->result();
+      }
+
 
 }

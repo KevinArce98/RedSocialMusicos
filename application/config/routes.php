@@ -51,13 +51,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['register'] = 'RegisterController/index';
 $route['search']='HomeController/search';
+$route['user/(:num)/show'] = 'HomeController/show/$1';
 $route['default_controller'] = 'LoginController';
 $route['user/save'] = 'RegisterController/create';
 $route['authentication'] = 'LoginController/auth';
 $route['login'] = 'LoginController/index';
-$route['destroy/(:num)'] = 'HomeController/destroy/$1';
-$route['edit/(:num)'] = 'HomeController/edit/$1';
-$route['update/(:num)'] = 'HomeController/update/$1';
 $route['logout'] = 'LoginController/logout';
 $route['home'] = 'HomeController/index';
 $route['404_override'] = '';
