@@ -8,11 +8,12 @@
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+		<link rel = "stylesheet" type = "text/css" href = "<?php echo base_url();?>application/css/principal.css">
 	</head>
 	<body>
 		<div class="container">
 			<div class="d-flex justify-content-center">
-				<h1>Bienvenido <?php if (isset($_SESSION['user'])) {
+				<h1>Bienvenido: </h1><h1 id="nombre"> <?php if (isset($_SESSION['user'])) {
 						echo $_SESSION['user']->name; 				
 					}else{
 						echo 'Invitado';
@@ -21,7 +22,7 @@
 			</div>
 			<div class="mt-4 mb-4">
 				<div class="d-flex justify-content-between">	
-					<h1>All Musicians of Database</h1>
+					<h2>All Musicians of Database</h2>
 					<?php if (isset($_SESSION['user'])) { ?>
 						<form action="<?php echo site_url('logout'); ?>" method="post">
 							<button type="submit" class="btn btn-outline-danger">Cerrar Sesión</button>
