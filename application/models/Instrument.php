@@ -22,10 +22,15 @@ class Instrument extends CI_Model {
       }
 
 
-      function insert($array){
-	$result = $this->db->insert('assigned_instruments', $arrray);
-                return $result;
-        }
+      public function insert($array, $id){
+          foreach ($array as $instrument) {
+            $aux = [
+              'musicians_id' => $id,
+              'instruments_id' => $instrument,
+            ];
+            $this->db->insert('assigned_instruments', $aux);
+         }
+      }
 
 
 }

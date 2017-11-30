@@ -45,7 +45,8 @@ class User extends CI_Model {
 
 
 			function insert($array){
-				$result = $this->db->insert('musicians', $arrray);
-                return $result;
+				$this->db->insert('musicians', $array);
+				$this->db->trans_complete();
+    			return $this->db->insert_id();
 			}
 }

@@ -3,8 +3,7 @@ class MusicalGenre extends CI_Model {
 
 
         
-        public function __construct()
-        {
+        public function __construct(){
                 parent::__construct();
                 // Your own constructor code
         }
@@ -16,9 +15,14 @@ class MusicalGenre extends CI_Model {
 
         }
 
-        function insert($array){
-	$result = $this->db->insert('assigned_musicalgenre', $arrray);
-                return $result;
+        public function insert($array, $id){
+			foreach ($array as $genre) {
+				$aux = [
+					'musicians_id' => $id,
+					'musicalgenre_id' => $genre,
+				];
+				$this->db->insert('assigned_musicalgenre', $aux);
+			}
         }
 
 
